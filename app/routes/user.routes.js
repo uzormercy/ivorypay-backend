@@ -1,8 +1,9 @@
 import { use } from '@app/utils/errors';
 import { Router } from 'express';
-import { login } from '@app/resources/users/user.controller';
+import { login, updateProfile } from '@app/resources/users/user.controller';
 const router = Router();
 
 router.post('/login', use(login));
+router.put('/profile/:id', use(updateProfile));
 
 export default router;

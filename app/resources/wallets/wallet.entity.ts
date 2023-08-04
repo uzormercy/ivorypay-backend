@@ -1,6 +1,7 @@
 import { Entity, Column, Unique, OneToOne, JoinColumn } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 import { User } from '@app/resources/users/user.entity';
+import { generateRandomDigits } from '@app/utils/helpers';
 
 @Entity()
 @Unique(['id'])
@@ -15,7 +16,7 @@ export class Wallet {
   @Column({ nullable: true, type: 'float', default: 0.0 })
   balance: number;
 
-  @Column({ nullable: false, type: 'varchar' })
+  @Column({ nullable: false, type: 'varchar', default: generateRandomDigits(10), unique: true })
   accountNumber: string;
 
   @Column({ type: 'timestamptz', default: new Date().toISOString() })

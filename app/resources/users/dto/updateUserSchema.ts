@@ -4,7 +4,6 @@ import { loginUserDtoInterface, updateUserDtoInterface } from '@app/resources/us
 export const updateUserSchema: ObjectSchema<updateUserDtoInterface> = yup.object().shape({
   firstname: yup.string().required('Firstname is mandatory'),
   lastname: yup.string().required('Lastname is mandatory'),
-  email: yup.string().email().required('Email is mandatory'),
   password: yup.string().required('Password is mandatory'),
   confirmPassword: yup.string().oneOf([yup.ref('password')], 'Password must match'),
 });

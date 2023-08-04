@@ -7,8 +7,10 @@ import validator from '@app/utils/validator';
 import { failResult, returnResult } from '@app/utils/respond';
 import { generateToken } from '@app/utils/token';
 import { v4 as uuid } from 'uuid';
+import { Wallet } from '@app/resources/wallets/wallet.entity';
 const adminRepository = AppDataSource.getRepository(Admin);
 const userRepository = AppDataSource.getRepository(User);
+const walletRepository = AppDataSource.getRepository(Wallet);
 
 export const inviteUser = async (email: string) => {
   const id = uuid();
@@ -18,6 +20,7 @@ export const inviteUser = async (email: string) => {
   };
   const user = await userRepository.save(userData);
   if (!user) return failResult('Unable to invite user');
+  await walletRepository.save({ id: uuid(), user });
   // TODO: send email notification to created user
   return returnResult(true, {
     status: 201,
