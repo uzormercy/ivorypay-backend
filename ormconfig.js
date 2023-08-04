@@ -7,8 +7,8 @@ module.exports= {
         "username": DB_USERNAME,
         "password": DB_PASSWORD,
         "database": DB_NAME,
-        "entities": ["app/entities/**/*.ts"],
-        "migrations": ["app/migrations/**/*.ts"],
+        "entities": [__dirname + '/../**/*.entity.{js,ts}'],
+        "migrations": [__dirname + '/../**/*.migration.{js,ts}'],
         "cli": {
           "entitiesDir": "app/entities",
           "migrationsDir": "app/migrations"

@@ -9,4 +9,8 @@ export const AppDataSource = new DataSource({
   username: 'root',
   password: 'password',
   database: 'ivoryPayDev',
+  synchronize: true,
+  logging: false,
+  entities: [__dirname + '/../**/*.entity.{js,ts}'],
+  migrations: [__dirname + '/../**/*.migration.{js,ts}'],
 });

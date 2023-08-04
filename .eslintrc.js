@@ -1,48 +1,25 @@
 module.exports = {
-    "env": {
-        "node": true,
-        "es2021": true
-    },
-    "extends": [
-        "standard-with-typescript",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:prettier/recommended",
-        "plugin:import/errors",
-        "plugin:import/warnings",
-        "plugin:import/typescript"
-    ],
-    "parser": '@typescript-eslint/parser',
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module",
-        "project": "./tsconfig.json"
-    },
-    "plugins": ["@typescript-eslint", "prettier", "import"],
-    "rules": {
-        "prettier/prettier": "error",
-        "import/extensions": "off",
-        "no-console": "off",
-        "import/order": [
-            "error",
-            {
-                "newlines-between": "never",
-                groups: [
-                    ["builtin", "external"],
-                    ["internal", "parent", "sibling", "index"]
-                ]
-            }
-        ]
-    },
-    "settings": {
-        "import/parsers": {
-            "@typescript-eslint/parser": ['.ts'],
-               "parserOptions": ["./tsconfig.json"]
-        },
-        "import/resolver":{
-            "typescript": {
-                "alwaysTryTypes": true,
-                "project": "./tsconfig.json"
-            }
-        }
-    },
-}
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: 'tsconfig.json',
+    tsconfigRootDir: __dirname,
+    sourceType: 'module',
+  },
+  plugins: ['@typescript-eslint/eslint-plugin'],
+  extends: [
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
+  ],
+  root: true,
+  env: {
+    node: true,
+    jest: true,
+  },
+  ignorePatterns: ['.eslintrc.js'],
+  rules: {
+    '@typescript-eslint/interface-name-prefix': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+  },
+};
